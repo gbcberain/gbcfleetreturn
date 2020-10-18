@@ -1,0 +1,64 @@
+<mvc:View controllerName="fleetreturn.GBC.controller.Return" xmlns:mvc="sap.ui.core.mvc" xmlns:html="http://www.w3.org/1999/xhtml"
+	displayBlock="true" xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<App id="idAppControl">
+		<pages>
+			<Page title="{i18n>title}">
+				<content>
+					<VBox class="sapUiSmallMargin">
+						<f:SimpleForm id="idReturn" editable="true" layout="ResponsiveGridLayout" title="Transfer Details" labelSpanXL="4" labelSpanL="3"
+							labelSpanM="4" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="4" emptySpanM="0" emptySpanS="0" columnsXL="2"
+							columnsL="1" columnsM="1" singleContainerFullSize="false">
+							<f:content>
+								<Label text="Transferor Employee ID" required="true" />
+								<Input id="idempId" maxLength="6" submit="onSubmit"  width="180px" required="true" placeholder="Enter Employee ID..." />
+								<Label text="Transferor Employee Name"/>
+								<Text id="idEmpName" text="{/empName}"/>
+								<Label text="Vehicle assigned to employee"/>
+								<Text id="idEmpVehicle" text="{/Equnr}"/>
+								<Label text="Vehicle Description"/>
+								<Text id="idVehDescr" text="{/EquDescr}"/>
+								<Label text="Vehicle Plate Number"/>
+								<Text id="idVehPlate" text="{/Plate}"/>
+								<Label text="Type of Transfer" required="true"/>
+								<ComboBox id="idTransfer" change="onChange">
+									<items>
+										<core:Item text="Transfer to Another employee" key="1"/>
+										<core:Item text="Transfer to fleet ( Issues with Vehicle )" key="2"/>
+										<core:Item text="Transfer to fleet ( Waiting for Driver )" key="3"/>
+									</items>
+								</ComboBox>
+								<Label id="idIssueText" text="Type of Issue" required="true"/>
+								<ComboBox id="idTypeIssue" change="onChangeIssue">
+									<items>
+										<core:Item text="Accident" key="1"/>
+										<core:Item text="Breakdown" key="2"/>
+										<core:Item text="Periodic Inspection" key="3"/>
+									</items>
+								</ComboBox>
+								<Label id="idtoempidLabel" text="Transferee Employee ID" required="true"/>
+								<Input id="idToempId" maxLength="6" submit="onSubmitTransferor"  width="180px" required="true"  placeholder="Enter Employee ID..."/>
+								<Label id="idtoempnameLabel" text="Transferee Employee Name"/>
+								<Text id="idToEmpName"/>
+								<Label text="Type of Vehicle" required="true"/>
+								<ComboBox id="idVehicleType">
+									<items>
+										<core:Item text="Delivery Truck" key="1"/>
+										<core:Item text="Service Vehicle" key="2"/>
+									</items>
+								</ComboBox>
+								<Label />
+								<HBox>
+									<Button text="Submit" press="onPress" >
+										<layoutData>
+											<FlexItemData growFactor="1"/>
+										</layoutData>
+									</Button>
+								</HBox>
+							</f:content>
+						</f:SimpleForm>
+					</VBox>
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>
